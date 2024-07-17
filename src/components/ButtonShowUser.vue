@@ -73,7 +73,7 @@ const getFullName = (person) => {
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
-  max-width: 600px;
+  max-width: 680px;
   border-radius: 5px;
   position: relative;
 }

@@ -95,7 +95,7 @@ const getFullName = (person) => {
   margin: 5% auto 10%;
   padding: 20px;
   width: 80%;
-  max-width: 600px;
+  max-width: 680px;
 }
 
 .close {
@@ -145,6 +145,10 @@ h4 {
 .pair-wrapper {
   display: flex;
   justify-content: center;
+}
+
+.pair {
+  text-align: center;
 }
 
 .pair .pair-wrapper ~ span {

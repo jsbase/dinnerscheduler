@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="scheduler">
     <h1>Dinner Scheduler</h1>
     <div v-if="loading">Loading...</div>
     <div v-else>
@@ -99,16 +99,18 @@ onMounted(() => {
 </script>
 
 <style scoped>
+.scheduler {
+  margin: 0 auto;
+  padding: 0 0 2rem;
+  max-width: 800px;
+}
+
 h1 {
-  text-align: center;
+  margin: 30px 0; 
 }
 
 h2 {
-  margin: 15px 0 3px;
-}
-
-h3 {
-  margin: 15px 0 0;
+  margin-bottom: 10px;
 }
 
 .filter {
@@ -122,7 +124,7 @@ h3 {
   margin-left: 10px;
 }
 
-.filter> :first-child {
+.filter > :first-child {
   margin-left: 0px;
 }
 
@@ -137,16 +139,15 @@ button {
   margin-bottom: 20px;
 }
 
-.pair {
-  margin: 10px;
-}
-
 .pair-wrapper {
   display: flex;
   justify-content: center;
-  margin-bottom: 7px;
   opacity: 0.2;
   transition: opacity 0.25s;
+}
+
+.pair {
+  text-align: center;
 }
 
 .pair .pair-wrapper ~ span {
