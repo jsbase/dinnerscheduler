@@ -8,11 +8,11 @@
         <ul class="schedules">
           <li v-for="(schedule, scheduleIndex) in savedSchedules" :key="scheduleIndex" class="schedule">
             <h3>Plan {{ scheduleIndex + 1 }}</h3>
-            <ul class="weeks">
-              <li v-for="(week, weekIndex) in schedule" :key="weekIndex" class="week">
-                <h4>Week {{ weekIndex + 1 }}</h4>
+            <ul>
+              <li v-for="(day, dayIndex) in schedule" :key="dayIndex" class="day">
+                <h4>{{ weekdays[dayIndex] }}</h4>
                 <div class="pairs-container">
-                  <div v-for="(pair, pairIndex) in week" :key="pairIndex" class="pair">
+                  <div v-for="(pair, pairIndex) in day" :key="pairIndex" class="pair">
                     <div class="pair-wrapper">
                       <div v-for="person in pair" :key="person.login.uuid" class="profile">
                         <img :src="person.picture.thumbnail" :alt="getFullName(person)" />
@@ -36,6 +36,7 @@ import { ref } from 'vue';
 
 const modalVisible = ref(false);
 const savedSchedules = ref([]);
+const weekdays = ['Mo', 'Di', 'Mi', 'Do', 'Fr'];
 
 const openModal = () => {
   savedSchedules.value = [];
@@ -132,7 +133,7 @@ h4 {
   margin-top: 10px;
 }
 
-.week {
+.day {
   margin-top: 5px;
 }
 

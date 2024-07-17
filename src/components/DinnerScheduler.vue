@@ -9,11 +9,11 @@
         <ButtonSaveSchedule :schedule="pairs" />
         <ButtonShowSchedules />
       </div>
-      <ul class="weeks">
-        <li v-for="(week, weekIndex) in pairs" :key="weekIndex" class="week">
-          <h2>Week {{ weekIndex + 1 }}</h2>
+      <ul>
+        <li v-for="(day, dayIndex) in pairs" :key="dayIndex">
+          <h2>{{ weekdays[dayIndex] }}</h2>
           <div class="pairs-container">
-            <div v-for="(pair, pairIndex) in week" :key="pairIndex" class="pair">
+            <div v-for="(pair, pairIndex) in day" :key="pairIndex" class="pair">
               <div class="pair-wrapper">
                 <div v-for="person in pair" :key="person.login.uuid" :class="{ 'matched': personMatchesFilter(person) }"
                   class="profile">
@@ -42,6 +42,7 @@ const pairs = ref([]);
 const loading = ref(true);
 const error = ref(null);
 const filter = ref('');
+const weekdays = ['Mo', 'Di', 'Mi', 'Do', 'Fr'];
 
 const fetchPeople = async () => {
   const apiUrl = 'https://randomuser.me/api/?results=6';
