@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button @click="save" title="Save">↓</button>
+    <button @click="save" title="Save schedule">↓</button>
   </div>
 </template>
 
