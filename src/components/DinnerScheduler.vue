@@ -90,7 +90,6 @@ const buildPairIndexes = (n) => {
 
 const personMatchesFilter = (person) => {
   const fullName = getFullName(person).toLowerCase();
-  console.log(fullName, ' -> ', filter.value, ' | ', fullName.includes(filter.value.toLowerCase()));
   return fullName.includes(filter.value.toLowerCase());
 };
 

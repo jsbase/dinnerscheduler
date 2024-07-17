@@ -34,9 +34,9 @@ const save = () => {
   if (isUnique) {
     const newScheduleKey = `schedule_${scheduleKeys.length}`;
     localStorage.setItem(newScheduleKey, JSON.stringify(schedule.value));
-    console.log('Array saved to local storage with key:', newScheduleKey);
+    console.info('Array saved to local storage with key:', newScheduleKey);
   } else {
-    console.log('Array already exists in local storage');
+    console.info('Array already exists in local storage');
   }
 };
 </script>
