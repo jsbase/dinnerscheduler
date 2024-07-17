@@ -44,8 +44,6 @@ const error = ref(null);
 const filter = ref('');
 const weekdays = ['Mo', 'Di', 'Mi', 'Do', 'Fr'];
 
-// Rest des Codes bleibt unverändert
-
 const fetchPeople = async () => {
   const apiUrl = 'https://randomuser.me/api/?results=6';
 
