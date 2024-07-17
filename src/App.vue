@@ -1,9 +1,9 @@
 <template>
   <div>
-    <WeeklyPairs />
+    <DinnerScheduler />
   </div>
 </template>
 
 <script setup>
-import WeeklyPairs from './components/DinnerScheduler.vue';
+import DinnerScheduler from './components/DinnerScheduler.vue';
 </script>
