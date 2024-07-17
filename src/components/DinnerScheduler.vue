@@ -15,8 +15,8 @@
           <div class="pairs-container">
             <div v-for="(pair, pairIndex) in week" :key="pairIndex" class="pair">
               <div class="pair-wrapper">
-                <div v-for="person in pair" :key="person.login.uuid"
-                  :class="{ 'matched': personMatchesFilter(person) }" class="profile">
+                <div v-for="person in pair" :key="person.login.uuid" :class="{ 'matched': personMatchesFilter(person) }"
+                  class="profile">
                   <img :src="person.picture.thumbnail" :alt="getFullName(person)" />
                   <span>{{ getFullName(person) }}</span>
                 </div>
@@ -120,11 +120,11 @@ h3 {
   margin-bottom: 10px;
 }
 
-.filter > * {
+.filter>* {
   margin-left: 10px;
 }
 
-.filter > :first-child {
+.filter> :first-child {
   margin-left: 0px;
 }
 

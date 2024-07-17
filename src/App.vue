@@ -4,13 +4,6 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import WeeklyPairs from './components/DinnerScheduler.vue';
-
-export default {
-  name: 'App',
-  components: {
-    WeeklyPairs,
-  },
-};
 </script>
