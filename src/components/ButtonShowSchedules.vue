@@ -10,7 +10,7 @@
             <h3>Plan {{ scheduleIndex + 1 }}</h3>
             <ul>
               <li v-for="(day, dayIndex) in schedule" :key="dayIndex" class="day">
-                <h4>{{ weekdays[dayIndex] }}</h4>
+                <h4>{{ weekdays[dayIndex % weekdays.length] }}</h4>
                 <div class="pairs-container">
                   <div v-for="(pair, pairIndex) in day" :key="pairIndex" class="pair">
                     <div class="pair-wrapper">
@@ -96,7 +96,7 @@ const getFullName = (person) => {
   margin: 5% auto 10%;
   padding: 20px;
   width: 80%;
-  max-width: 680px;
+  max-width: 1280px;
 }
 
 .close {

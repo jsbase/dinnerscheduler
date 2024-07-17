@@ -11,7 +11,7 @@
       </div>
       <ul>
         <li v-for="(day, dayIndex) in pairs" :key="dayIndex">
-          <h2>{{ weekdays[dayIndex] }}</h2>
+          <h2>{{ weekdays[dayIndex % weekdays.length] }}</h2>
           <div class="pairs-container">
             <div v-for="(pair, pairIndex) in day" :key="pairIndex" class="pair">
               <div class="pair-wrapper">
@@ -43,6 +43,8 @@ const loading = ref(true);
 const error = ref(null);
 const filter = ref('');
 const weekdays = ['Mo', 'Di', 'Mi', 'Do', 'Fr'];
+
+// Rest des Codes bleibt unverändert
 
 const fetchPeople = async () => {
   const apiUrl = 'https://randomuser.me/api/?results=6';
