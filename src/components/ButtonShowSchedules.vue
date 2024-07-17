@@ -14,8 +14,7 @@
                 <div class="pairs-container">
                   <div v-for="(pair, pairIndex) in week" :key="pairIndex" class="pair">
                     <div class="pair-wrapper">
-                      <div v-for="person in pair" :key="person.login.uuid"
-                        class="profile">
+                      <div v-for="person in pair" :key="person.login.uuid" class="profile">
                         <img :src="person.picture.thumbnail" :alt="getFullName(person)" />
                         <span>{{ getFullName(person) }}</span>
                       </div>
