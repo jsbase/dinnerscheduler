@@ -42,8 +42,20 @@ const getFullName = (person) => {
 </script>
 
 <style scoped>
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 .modal {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: fixed;
   z-index: 9999;
   left: 0;
@@ -52,12 +64,12 @@ const getFullName = (person) => {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   overflow: auto;
+  animation: 0.3s ease-in-out 0s 1 fadeIn;
 }
 
 .modal-content {
   background-color: #fefefe;
-  color: #232323;
-  margin: 15% auto;
+  color: #242424;
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
@@ -71,13 +83,14 @@ const getFullName = (person) => {
   float: right;
   font-size: 28px;
   font-weight: bold;
+  transition: color 0.25s;
 }
 
 .close:hover,
 .close:focus {
-  color: black;
-  text-decoration: none;
+  color: #535bf2;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .modal-profile {

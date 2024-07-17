@@ -7,10 +7,10 @@
         <h2>Saved Schedules</h2>
         <ul class="schedules">
           <li v-for="(schedule, scheduleIndex) in savedSchedules" :key="scheduleIndex" class="schedule">
-            <h2>Plan {{ scheduleIndex + 1 }}</h2>
+            <h3>Plan {{ scheduleIndex + 1 }}</h3>
             <ul class="weeks">
               <li v-for="(week, weekIndex) in schedule" :key="weekIndex" class="week">
-                <h2>Week {{ weekIndex + 1 }}</h2>
+                <h4>Week {{ weekIndex + 1 }}</h4>
                 <div class="pairs-container">
                   <div v-for="(pair, pairIndex) in week" :key="pairIndex" class="pair">
                     <div class="pair-wrapper">
@@ -32,7 +32,7 @@
 </template>
 
 <script setup>
-import { ref /*, onMounted */ } from 'vue';
+import { ref } from 'vue';
 
 const modalVisible = ref(false);
 const savedSchedules = ref([]);
@@ -61,6 +61,16 @@ const getFullName = (person) => {
 </script>
 
 <style scoped>
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 .modal {
   display: block;
   position: fixed;
@@ -71,18 +81,21 @@ const getFullName = (person) => {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   overflow: auto;
+  animation: 0.3s ease-in-out 0s 1 fadeIn;
+  padding-top: 4%;
 }
 
 .modal-content {
   background-color: #fefefe;
-  color: #232323;
-  margin: 15% auto;
-  padding: 20px;
   border: 1px solid #888;
+  border-radius: 5px;
+  color: #242424;
+  padding: 20px;
+  position: relative;
+  margin: 5% auto 10%;
+  padding: 20px;
   width: 80%;
   max-width: 600px;
-  border-radius: 5px;
-  position: relative;
 }
 
 .close {
@@ -90,29 +103,52 @@ const getFullName = (person) => {
   float: right;
   font-size: 28px;
   font-weight: bold;
+  transition: color 0.25s;
 }
 
 .close:hover,
 .close:focus {
-  color: black;
-  text-decoration: none;
+  color: #535bf2;
   cursor: pointer;
+  text-decoration: none;
+}
+
+h2 {
+  margin: 8px 0 0;
+}
+
+h3 {
+  font-size: 1.1rem;
+  border-bottom: 1px solid #aaa;
+}
+
+h4 {
+  font-size: 0.9rem;
+}
+
+.schedule {
+  border: 1px solid #aaa;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.week {
+  margin-top: 5px;
 }
 
 .pairs-container {
   display: flex;
   justify-content: space-around;
-  margin-bottom: 20px;
-}
-
-.pair {
-  margin: 10px;
+  margin-bottom: 8px;
 }
 
 .pair-wrapper {
   display: flex;
   justify-content: center;
-  margin-bottom: 15px;
+}
+
+.pair .pair-wrapper ~ span {
+  font-size: 0.7rem;
 }
 
 .profile {
@@ -121,7 +157,7 @@ const getFullName = (person) => {
   border-radius: 50%;
   overflow: hidden;
   margin: 0 5px;
-  border: 3px solid #fff;
+  border: 3px solid #fefefe;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   position: relative;
   z-index: 1;
@@ -131,10 +167,6 @@ const getFullName = (person) => {
 
 .profile:first-child {
   transform: translateX(15px) translateY(0px);
-}
-
-.profile.filtered-out {
-  opacity: 0.3;
 }
 
 .profile img {

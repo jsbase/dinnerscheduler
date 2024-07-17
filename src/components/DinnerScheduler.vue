@@ -104,23 +104,22 @@ h1 {
   text-align: center;
 }
 
-h2,
-h3 {
-  margin-top: 20px;
+h2 {
+  margin: 15px 0 3px;
 }
 
 h3 {
-  margin-bottom: 0;
+  margin: 15px 0 0;
 }
 
 .filter {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 28px;
 }
 
-.filter>* {
+.filter > * {
   margin-left: 10px;
 }
 
@@ -146,8 +145,13 @@ button {
 .pair-wrapper {
   display: flex;
   justify-content: center;
-  margin-bottom: 15px;
+  margin-bottom: 7px;
   opacity: 0.2;
+  transition: opacity 0.25s;
+}
+
+.pair .pair-wrapper ~ span {
+  font-size: 0.8rem;
 }
 
 .pair-wrapper:has(.matched) {
@@ -160,7 +164,7 @@ button {
   border-radius: 50%;
   overflow: hidden;
   margin: 0 5px;
-  border: 3px solid #fff;
+  border: 3px solid #fefefe;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   position: relative;
   z-index: 1;
