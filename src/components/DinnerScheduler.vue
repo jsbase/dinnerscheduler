@@ -16,7 +16,7 @@
             <div v-for="(pair, pairIndex) in week" :key="pairIndex" class="pair">
               <div class="pair-wrapper">
                 <div v-for="person in pair" :key="person.login.uuid"
-                  :class="{ 'filtered-out': !personMatchesFilter(person) }" class="profile">
+                  :class="{ 'matched': personMatchesFilter(person) }" class="profile">
                   <img :src="person.picture.thumbnail" :alt="getFullName(person)" />
                   <span>{{ getFullName(person) }}</span>
                 </div>
@@ -90,6 +90,7 @@ const buildPairIndexes = (n) => {
 
 const personMatchesFilter = (person) => {
   const fullName = getFullName(person).toLowerCase();
+  console.log(fullName, ' -> ', filter.value, ' | ', fullName.includes(filter.value.toLowerCase()));
   return fullName.includes(filter.value.toLowerCase());
 };
 
@@ -119,6 +120,14 @@ h3 {
   margin-bottom: 10px;
 }
 
+.filter > * {
+  margin-left: 10px;
+}
+
+.filter > :first-child {
+  margin-left: 0px;
+}
+
 button {
   padding: 9px 14px;
   margin-left: 10px;
@@ -138,6 +147,11 @@ button {
   display: flex;
   justify-content: center;
   margin-bottom: 15px;
+  opacity: 0.2;
+}
+
+.pair-wrapper:has(.matched) {
+  opacity: 1;
 }
 
 .profile {
@@ -156,10 +170,6 @@ button {
 
 .profile:first-child {
   transform: translateX(15px) translateY(0px);
-}
-
-.profile.filtered-out {
-  opacity: 0.3;
 }
 
 .profile img {
