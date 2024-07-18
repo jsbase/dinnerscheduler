@@ -6,7 +6,7 @@
         <span @click="closeModal" class="close">&times;</span>
         <h2>Saved Schedules</h2>
         <ul class="schedules">
-          <li v-for="(schedule, scheduleIndex) in userStore.savedSchedules" :key="scheduleIndex" class="schedule">
+          <li v-for="(schedule, scheduleIndex) in scheduleStore.savedSchedules" :key="scheduleIndex" class="schedule">
             <h3>Plan {{ scheduleIndex + 1 }}</h3>
             <ul>
               <li v-for="(day, dayIndex) in schedule" :key="dayIndex" class="day">
@@ -33,9 +33,9 @@
 
 <script setup>
 import { ref } from 'vue';
-import { useUserStore } from '../stores/userStore';
+import { useScheduleStore } from '../stores/scheduleStore';
 
-const userStore = useUserStore();
+const scheduleStore = useScheduleStore();
 const modalVisible = ref(false);
 const weekdays = ['Mo', 'Di', 'Mi', 'Do', 'Fr'];
 

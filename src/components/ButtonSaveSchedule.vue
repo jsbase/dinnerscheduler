@@ -7,11 +7,13 @@
 
 <script setup>
 import { useUserStore } from '../stores/userStore';
+import { useScheduleStore } from '../stores/scheduleStore';
 import { storeToRefs } from 'pinia';
 import { ref } from 'vue';
 import Notification from './Notification.vue';
 
 const userStore = useUserStore();
+const scheduleStore = useScheduleStore();
 const { simplifiedUsers } = storeToRefs(userStore);
 
 const notificationMessage = ref('');
@@ -20,7 +22,7 @@ const notificationType = ref('info');
 const save = () => {
   const schedule = pairPeople(simplifiedUsers.value);
 
-  if (userStore.saveSchedule(schedule)) {
+  if (scheduleStore.saveSchedule(schedule)) {
     notificationMessage.value = 'Schedule saved successfully!';
     notificationType.value = 'success';
   } else {

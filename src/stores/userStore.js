@@ -1,12 +1,12 @@
 import { defineStore } from 'pinia';
 import axios from 'axios';
+import { useScheduleStore } from './scheduleStore';
 
 export const useUserStore = defineStore('user', {
   state: () => ({
     users: [],
     loading: true,
     error: null,
-    savedSchedules: [],
   }),
   getters: {
     simplifiedUsers: (state) => state.users.map(user => ({
@@ -32,18 +32,8 @@ export const useUserStore = defineStore('user', {
       }
     },
     saveSchedule(schedule) {
-      const isUnique = !this.savedSchedules.some(
-        savedSchedule => JSON.stringify(savedSchedule) === JSON.stringify(schedule)
-      );
-      if (isUnique) {
-        this.savedSchedules.push(schedule);
-        return true;
-      }
-      return false;
+      const scheduleStore = useScheduleStore();
+      return scheduleStore.saveSchedule(schedule);
     },
-  },
-  persist: {
-    key: 'userStore',
-    paths: ['savedSchedules'],
   },
 });
