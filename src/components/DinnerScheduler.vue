@@ -6,7 +6,7 @@
       Loading...
     </div>
     <div v-else-if="userStore.error">{{ userStore.error }}</div>
-    <div v-else class="content fade-in">
+    <div v-else :class="{'content': true, 'fade-in': fadeIn}">
       <div class="filter">
         <input type="text" v-model="filter" placeholder="Filter by name..." />
         <ButtonShowUser :people="simplifiedUsers" />
@@ -35,7 +35,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted, computed, nextTick } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useUserStore } from '../stores/userStore';
 import { pairPeople } from '../utils/pairingUtils';
@@ -48,6 +48,7 @@ const { simplifiedUsers } = storeToRefs(userStore);
 
 const filter = ref('');
 const weekdays = ['Mo', 'Di', 'Mi', 'Do', 'Fr'];
+const fadeIn = ref(false);
 
 const pairs = computed(() => pairPeople(simplifiedUsers.value));
 
@@ -57,7 +58,15 @@ const personMatchesFilter = (person) => {
 
 onMounted(() => {
   if (simplifiedUsers.value.length === 0) {
-    userStore.fetchUsers();
+    userStore.fetchUsers().then(() => {
+      nextTick(() => {
+        fadeIn.value = true;
+      });
+    });
+  } else {
+    nextTick(() => {
+      fadeIn.value = true;
+    });
   }
 });
 </script>
@@ -171,7 +180,7 @@ button {
 
 .content {
   opacity: 0;
-  transition: opacity 1s ease-in;
+  transition: opacity 0.5s ease-in;
 }
 
 .fade-in {
