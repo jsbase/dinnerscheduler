@@ -36,12 +36,12 @@
 
 <script setup>
 import { ref, onMounted, computed } from 'vue';
-import { useUserStore } from '../stores/userStore';
 import { storeToRefs } from 'pinia';
+import { useUserStore } from '../stores/userStore';
+import { pairPeople } from '../utils/pairingUtils';
 import ButtonShowUser from './ButtonShowUser.vue';
 import ButtonSaveSchedule from './ButtonSaveSchedule.vue';
 import ButtonShowSchedules from './ButtonShowSchedules.vue';
-import { pairPeople } from '../utils/pairingUtils';
 
 const userStore = useUserStore();
 const { simplifiedUsers } = storeToRefs(userStore);
