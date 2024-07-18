@@ -5,8 +5,8 @@
       <div class="modal-content">
         <span @click="closeModal" class="close">&times;</span>
         <h2>All People</h2>
-        <div class="modal-profile" v-for="person in people" :key="person.login.uuid">
-          <img :src="person.picture.thumbnail" :alt="getFullName(person)" />
+        <div class="modal-profile" v-for="(person, index) in people" :key="index">
+          <img :src="person.icon" :alt="getFullName(person)" />
           <span>{{ getFullName(person) }}</span>
         </div>
       </div>
@@ -15,7 +15,7 @@
 </template>
 
 <script setup>
-import { ref, toRefs, defineProps } from 'vue';
+import { ref, toRefs } from 'vue';
 
 const modalVisible = ref(false);
 
@@ -37,7 +37,7 @@ const closeModal = () => {
 };
 
 const getFullName = (person) => {
-  return `${person.name.first} ${person.name.last}`;
+  return person.name;
 };
 </script>
 

@@ -6,7 +6,7 @@
         <span @click="closeModal" class="close">&times;</span>
         <h2>Saved Schedules</h2>
         <ul class="schedules">
-          <li v-for="(schedule, scheduleIndex) in savedSchedules" :key="scheduleIndex" class="schedule">
+          <li v-for="(schedule, scheduleIndex) in userStore.savedSchedules" :key="scheduleIndex" class="schedule">
             <h3>Plan {{ scheduleIndex + 1 }}</h3>
             <ul>
               <li v-for="(day, dayIndex) in schedule" :key="dayIndex" class="day">
@@ -14,12 +14,12 @@
                 <div class="pairs-container">
                   <div v-for="(pair, pairIndex) in day" :key="pairIndex" class="pair">
                     <div class="pair-wrapper">
-                      <div v-for="person in pair" :key="person.login.uuid" class="profile">
-                        <img :src="person.picture.thumbnail" :alt="getFullName(person)" />
-                        <span>{{ getFullName(person) }}</span>
+                      <div v-for="person in pair" :key="person.email" class="profile">
+                        <img :src="person.icon" :alt="person.name" />
+                        <span>{{ person.name }}</span>
                       </div>
                     </div>
-                    <span>{{ pair[0].name.first }} & {{ pair[1].name.first }}</span>
+                    <span>{{ pair[0].name.split(' ')[0] }} & {{ pair[1].name.split(' ')[0] }}</span>
                   </div>
                 </div>
               </li>
@@ -33,31 +33,18 @@
 
 <script setup>
 import { ref } from 'vue';
+import { useUserStore } from '../stores/userStore';
 
+const userStore = useUserStore();
 const modalVisible = ref(false);
-const savedSchedules = ref([]);
 const weekdays = ['Mo', 'Di', 'Mi', 'Do', 'Fr'];
 
 const openModal = () => {
-  savedSchedules.value = [];
-
-  for (let i = 0; i < localStorage.length; i++) {
-    const key = localStorage.key(i);
-    if (key.startsWith('schedule_')) {
-      const storedSchedule = JSON.parse(localStorage.getItem(key));
-      savedSchedules.value.push(storedSchedule);
-    }
-  }
-
   modalVisible.value = true;
 };
 
 const closeModal = () => {
   modalVisible.value = false;
-};
-
-const getFullName = (person) => {
-  return `${person.name.first} ${person.name.last}`;
 };
 </script>
 
@@ -152,7 +139,7 @@ h4 {
   text-align: center;
 }
 
-.pair .pair-wrapper ~ span {
+.pair .pair-wrapper~span {
   font-size: 0.7rem;
 }
 

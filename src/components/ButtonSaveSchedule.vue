@@ -1,42 +1,55 @@
 <template>
   <div>
     <button @click="save" title="Save schedule">↓</button>
+    <Notification :message="notificationMessage" :type="notificationType" />
   </div>
 </template>
 
 <script setup>
-import { toRefs, defineProps } from 'vue';
+import { useUserStore } from '../stores/userStore';
+import { storeToRefs } from 'pinia';
+import { ref } from 'vue';
+import Notification from './Notification.vue';
 
-const props = defineProps({
-  schedule: {
-    type: Array,
-    required: true
-  }
-});
+const userStore = useUserStore();
+const { simplifiedUsers } = storeToRefs(userStore);
 
-const { schedule } = toRefs(props);
+const notificationMessage = ref('');
+const notificationType = ref('info');
 
 const save = () => {
-  const allSchedules = [];
-  const scheduleKeys = [];
+  const schedule = pairPeople(simplifiedUsers.value);
 
-  for (let i = 0; i < localStorage.length; i++) {
-    const key = localStorage.key(i);
-    if (key.startsWith('schedule_')) {
-      const storedSchedule = JSON.parse(localStorage.getItem(key));
-      allSchedules.push(storedSchedule);
-      scheduleKeys.push(key);
-    }
-  }
-
-  const isUnique = !allSchedules.some(storedSchedule => JSON.stringify(storedSchedule) === JSON.stringify(schedule.value));
-
-  if (isUnique) {
-    const newScheduleKey = `schedule_${scheduleKeys.length}`;
-    localStorage.setItem(newScheduleKey, JSON.stringify(schedule.value));
-    console.info('Array saved to local storage with key:', newScheduleKey);
+  if (userStore.saveSchedule(schedule)) {
+    notificationMessage.value = 'Schedule saved successfully!';
+    notificationType.value = 'success';
   } else {
-    console.info('Array already exists in local storage');
+    notificationMessage.value = 'Schedule already exists in storage.';
+    notificationType.value = 'info';
   }
+};
+
+const pairPeople = (persons) => {
+  const pairings = buildPairIndexes(persons.length);
+  const pairIxToPerson = (i) => persons[(i + 1) % persons.length];
+  return pairings.map((pairing) =>
+    pairing.map((pair) => pair.map(pairIxToPerson))
+  );
+};
+
+const buildPairIndexes = (n) => {
+  if (n % 2 !== 0) {
+    throw new Error(`${n} is an odd number`);
+  }
+  const pairings = [];
+  const max = n - 1;
+  for (let i = 0; i < max; i++) {
+    const pairing = [[max, i]];
+    for (let k = 1; k < n / 2; k++) {
+      pairing.push([(i + k) % max, (max + i - k) % max]);
+    }
+    pairings.push(pairing);
+  }
+  return pairings;
 };
 </script>
