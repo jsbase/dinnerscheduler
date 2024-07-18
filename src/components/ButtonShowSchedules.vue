@@ -5,6 +5,7 @@
       <div class="modal-content">
         <span @click="closeModal" class="close">&times;</span>
         <h2>Saved Schedules</h2>
+        <input type="text" v-model="filter" placeholder="Filter by name..." class="filter-input" />
         <ul class="schedules">
           <li v-for="(schedule, scheduleIndex) in scheduleStore.savedSchedules" :key="scheduleIndex" class="schedule">
             <h3>Plan {{ scheduleIndex + 1 }}</h3>
@@ -14,7 +15,9 @@
                 <div class="pairs-container">
                   <div v-for="(pair, pairIndex) in day" :key="pairIndex" class="pair">
                     <div class="pair-wrapper">
-                      <div v-for="person in pair" :key="person.email" class="profile">
+                      <div v-for="person in pair" :key="person.email"
+                        :class="{ 'matched': personMatchesFilter(person), 'not-matched': !personMatchesFilter(person) }"
+                        class="profile">
                         <img :src="person.icon" :alt="person.name" />
                         <span>{{ person.name }}</span>
                       </div>
@@ -38,6 +41,7 @@ import { useScheduleStore } from '../stores/scheduleStore';
 const scheduleStore = useScheduleStore();
 const modalVisible = ref(false);
 const weekdays = ['Mo', 'Di', 'Mi', 'Do', 'Fr'];
+const filter = ref('');
 
 const openModal = () => {
   modalVisible.value = true;
@@ -45,6 +49,10 @@ const openModal = () => {
 
 const closeModal = () => {
   modalVisible.value = false;
+};
+
+const personMatchesFilter = (person) => {
+  return person.name.toLowerCase().includes(filter.value.toLowerCase());
 };
 </script>
 
@@ -166,5 +174,24 @@ h4 {
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+.filter-input {
+  background-color: #232323;
+  padding: 11px;
+  border-radius: 8px;
+  border: 3px solid transparent;
+  outline: none;
+  transition: border-color 0.25s;
+  margin: 16px 0;
+  width: calc(100% - 34px);
+}
+
+.profile.not-matched {
+  opacity: 0.2;
+}
+
+.profile.matched {
+  opacity: 1;
 }
 </style>
