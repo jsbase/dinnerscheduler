@@ -1,6 +1,5 @@
 import { defineStore } from 'pinia';
 import axios from 'axios';
-import { useScheduleStore } from './scheduleStore';
 
 export const useUserStore = defineStore('user', {
   state: () => ({
@@ -30,10 +29,6 @@ export const useUserStore = defineStore('user', {
       } finally {
         this.loading = false;
       }
-    },
-    saveSchedule(schedule) {
-      const scheduleStore = useScheduleStore();
-      return scheduleStore.saveSchedule(schedule);
     },
   },
 });
