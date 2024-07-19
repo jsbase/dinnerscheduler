@@ -70,7 +70,7 @@ Der Dinner Scheduler wurde als MVP konzipiert, der alle grundlegenden Anforderun
 #### 🔮 Ausblick:
 - Verbesserung der Benutzeroberfläche und User Experience
 - Implementierung zusätzlicher Funktionen (z.B. Essensvorlieben, Allergien)
-- Optimierung der Performance und Skalierbarkeit
+- Optimierung der Performance, Skalierbarkeit & Wartbarkeit (zB. Button & Modal Komponenten auslagern)
 - Erweiterung der Filterfunktionen
 - Integration von Benachrichtigungssystemen
 
