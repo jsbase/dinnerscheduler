@@ -20,13 +20,13 @@ Der Dinner Scheduler ist ein Minimum Viable Product (MVP), welches demonstriert 
 ## 🧩 Kernkomponenten
 
 1.  `DinnerScheduler.vue` (Hauptkomponente)
-   1.1 `ButtonShowUser.vue`
-   1.2 `ButtonSaveSchedule.vue`
-   1.3 `ButtonShowSchedules.vue`
+   - `ButtonShowUser.vue` (child-Komponente)
+   - `ButtonSaveSchedule.vue` (child-Komponente)
+   - `ButtonShowSchedules.vue` (child-Komponente)
 2. `pairingUtils.js` (Logik für die Paarbildung)
 3. Pinia Store
-   3.1 `userStore.js` (für Benutzerdaten)
-   3.2 `scheduleStore.js` (für gespeicherte Zeitpläne)
+   - `userStore.js` (für Benutzerdaten)
+   - `scheduleStore.js` (für gespeicherte Zeitpläne)
 
 ## 🧮 Logik für die Paarbildung
 
