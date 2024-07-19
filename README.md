@@ -41,7 +41,7 @@ Der Algorithmus erstellt Paarungen für `n` Teilnehmer (wobei `n` gerade sein mu
 
 Der Algorithmus funktioniert wie folgt:
 
-1. In jeder Runde bleibt ein Teilnehmer an fester Position.
+1. In jeder Runde bleibt ein Teilnehmer immer an einer fester Position.
 2. Die anderen Teilnehmer rotieren im Uhrzeigersinn.
 3. Dies garantiert, dass jeder Teilnehmer genau einmal mit jedem anderen gepaart wird.
 
