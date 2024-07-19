@@ -16,7 +16,6 @@ Der Dinner Scheduler ist ein Minimum Viable Product (MVP), welches demonstriert 
 - State Management: Pinia
 - HTTP-Client: Axios
 - Styling: Scoped Vanilla CSS
-- CSS animations & transitions
 
 ## 🧩 Kernkomponenten
 
@@ -80,6 +79,7 @@ Der Dinner Scheduler wurde als MVP konzipiert, der alle grundlegenden Anforderun
 Bei der Entwicklung dieses MVPs wurden bewusst einige Entscheidungen getroffen, um eine schnelle Umsetzung und Präsentation zu ermöglichen:
 
 1. **CSS-Framework**
+   - CSS-basierte Transitionen für verbesserte Performance und flüssigere Animationen.
    - Es wurde auf den Einsatz von CSS-Bibliotheken wie Tailwind verzichtet.
    - Stattdessen wurde Vanilla CSS mit Scoped Styles verwendet.
    - Begründung: Reduzierung von externen Abhängigkeiten und schnellere initiale Entwicklung.
