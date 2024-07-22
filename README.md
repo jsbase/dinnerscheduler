@@ -1,6 +1,6 @@
 # 🍽️ Dinner scheduler
 
-Diese Beispielprojekt wurde mit vite auf https://stackblitz.com erstellt.
+Dieses Beispielprojekt wurde mit vite auf https://stackblitz.com erstellt.
 
 🌐 **Link**: https://stackblitz.com/~/github.com/jsbase/dinnerscheduler
 
