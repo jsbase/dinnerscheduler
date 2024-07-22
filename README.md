@@ -47,7 +47,7 @@ Der Algorithmus funktioniert wie folgt:
 2. Die anderen Teilnehmer rotieren im Uhrzeigersinn.
 3. Dies garantiert, dass jeder Teilnehmer genau einmal mit jedem anderen gepaart wird.
 
-Die mathematische Umsetzung ist wie folgt:
+Mathematischer Ansatz:
 
 1. Die Variable `max` wird als `n - 1` definiert, wobei `n` die Gesamtzahl der Teilnehmer ist.
 2. Der feste Teilnehmer hat den Index `max`.
