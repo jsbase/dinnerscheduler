@@ -32,7 +32,7 @@ Der Dinner Scheduler ist ein Minimum Viable Product (MVP), welches demonstriert 
 ## 🌐 Datenquelle
 
 Die Beispiel-Benutzer werden von der API [Random User Generator](https://randomuser.me/) bezogen. Diese Entscheidung wurde getroffen, um schnell und einfach realistische Benutzerdaten für Demonstrationszwecke zu erhalten.
-Bei jedem Neuladen der Seite wird eine Liste mit imer den gleichen zufällig generierten Benutzern von der API abgerufen. Die Reihenfolge wird nach dem response zufällig sortiert um mit dem Paarbildungsmechanismus die Paare entsprechend anzuzeigen.
+Bei jedem Neuladen der Seite wird eine Liste mit zufällig generierten Usern von der API abgerufen. Die Reihenfolge wird nach dem response zufällig sortiert damit das Datenobjekt/Array dann an den Paarbildungsmechanismus übergeben werden kann.
 
 ## 🧮 Logik für die Paarbildung
 
