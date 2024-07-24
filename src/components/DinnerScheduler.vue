@@ -128,7 +128,7 @@ button {
 
 @media screen and (max-width: 390px) {
   .pairs-container {
-    zoom: 70%;
+    zoom: 40%;
   }
 }
 
