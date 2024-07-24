@@ -206,5 +206,6 @@ h4 {
 
 .profile.matched {
   opacity: 1;
+  z-index: 2;
 }
 </style>
