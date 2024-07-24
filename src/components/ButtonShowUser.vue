@@ -111,4 +111,9 @@ const getFullName = (person) => {
   border-radius: 50%;
   overflow: hidden;
 }
+
+.modal-profile img {
+  width: 100%;
+  height: 100%;
+}
 </style>
