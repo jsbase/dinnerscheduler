@@ -11,7 +11,7 @@ export const useUserStore = defineStore('user', {
     simplifiedUsers: (state) => state.users.map(user => ({
       name: `${user.name.first} ${user.name.last}`,
       email: user.email,
-      icon: user.picture.thumbnail
+      picture: user.picture
     })),
   },
   actions: {

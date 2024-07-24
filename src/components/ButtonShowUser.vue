@@ -7,9 +7,9 @@
         <h2>All People</h2>
         <div class="modal-profile" v-for="(person, index) in people" :key="index">
           <picture>
-            <source media="(min-width: 1200px)" :srcset="person.icon">
-            <source media="(min-width: 768px)" :srcset="person.icon">
-            <img :src="person.icon" :alt="getFullName(person)">
+            <source media="(min-width: 1200px)" :srcset="person.picture.large">
+            <source media="(min-width: 768px)" :srcset="person.picture.medium">
+            <img :src="person.picture.thumbnail" :alt="getFullName(person)">
           </picture>
           <span>{{ getFullName(person) }}</span>
         </div>

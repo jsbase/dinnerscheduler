@@ -22,9 +22,9 @@
                 <div v-for="person in pair" :key="person.email" :class="{ 'matched': personMatchesFilter(person) }"
                   class="profile">
                   <picture>
-                    <source media="(min-width: 1200px)" :srcset="person.icon">
-                    <source media="(min-width: 768px)" :srcset="person.icon">
-                    <img :src="person.icon" :alt="person.name">
+                    <source media="(min-width: 1200px)" :srcset="person.picture.large">
+                    <source media="(min-width: 768px)" :srcset="person.picture.medium">
+                    <img :src="person.picture.thumbnail" :alt="person.name">
                   </picture>
                   <span>{{ person.name }}</span>
                 </div>
@@ -97,6 +97,16 @@ h2 {
   margin-bottom: 28px;
 }
 
+@media screen and (max-width: 390px) {
+  .filter {
+    margin-bottom: 20px;
+  }
+
+  .filter input {
+    max-width: 35%;
+  }
+}
+
 .filter > * {
   margin-left: 10px;
 }
@@ -114,6 +124,12 @@ button {
   display: flex;
   justify-content: space-around;
   margin-bottom: 20px;
+}
+
+@media screen and (max-width: 390px) {
+  .pairs-container {
+    zoom: 70%;
+  }
 }
 
 .pair-wrapper {

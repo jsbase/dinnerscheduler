@@ -19,9 +19,9 @@
                         :class="{ 'matched': personMatchesFilter(person), 'not-matched': !personMatchesFilter(person) }"
                         class="profile">
                         <picture>
-                          <source media="(min-width: 1200px)" :srcset="person.icon">
-                          <source media="(min-width: 768px)" :srcset="person.icon">
-                          <img :src="person.icon" :alt="person.name">
+                          <source media="(min-width: 1200px)" :srcset="person.picture.large">
+                          <source media="(min-width: 768px)" :srcset="person.picture.medium">
+                          <img :src="person.picture.thumbnail" :alt="person.name">
                         </picture>
                         <span>{{ person.name }}</span>
                       </div>
@@ -140,6 +140,12 @@ h4 {
   display: flex;
   justify-content: space-around;
   margin-bottom: 8px;
+}
+
+@media screen and (max-width: 390px) {
+  .pairs-container {
+    zoom: 62%;
+  }
 }
 
 .pair-wrapper {
