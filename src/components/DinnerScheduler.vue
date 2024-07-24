@@ -18,8 +18,8 @@
           <h2>{{ weekdays[dayIndex % weekdays.length] }}</h2>
           <div class="pairs-container">
             <div v-for="(pair, pairIndex) in day" :key="pairIndex" class="pair">
-              <div class="pair-wrapper">
-                <div v-for="person in pair" :key="person.email" :class="{ 'matched': personMatchesFilter(person) }"
+              <ul class="pair-wrapper">
+                <li v-for="person in pair" :key="person.email" :class="{ 'matched': personMatchesFilter(person) }"
                   class="profile">
                   <picture>
                     <source media="(min-width: 1200px)" :srcset="person.picture.large">
@@ -27,8 +27,8 @@
                     <img :src="person.picture.thumbnail" :alt="person.name">
                   </picture>
                   <span>{{ person.name }}</span>
-                </div>
-              </div>
+                </li>
+              </ul>
               <span>{{ pair[0].name.split(' ')[0] }} & {{ pair[1].name.split(' ')[0] }}</span>
             </div>
           </div>
