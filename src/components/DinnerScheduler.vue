@@ -6,7 +6,7 @@
       Loading...
     </div>
     <div v-else-if="userStore.error">{{ userStore.error }}</div>
-    <div v-else :class="{'content': true, 'fade-in': fadeIn}">
+    <div v-else :class="{ 'content': true, 'fade-in': fadeIn }">
       <div class="filter">
         <input type="text" v-model="filter" placeholder="Filter by name..." />
         <ButtonShowUser :people="simplifiedUsers" />
@@ -21,7 +21,11 @@
               <div class="pair-wrapper">
                 <div v-for="person in pair" :key="person.email" :class="{ 'matched': personMatchesFilter(person) }"
                   class="profile">
-                  <img :src="person.icon" :alt="person.name" />
+                  <picture>
+                    <source media="(min-width: 1200px)" :srcset="person.icon">
+                    <source media="(min-width: 768px)" :srcset="person.icon">
+                    <img :src="person.icon" :alt="person.name">
+                  </picture>
                   <span>{{ person.name }}</span>
                 </div>
               </div>
@@ -93,11 +97,11 @@ h2 {
   margin-bottom: 28px;
 }
 
-.filter>* {
+.filter > * {
   margin-left: 10px;
 }
 
-.filter> :first-child {
+.filter > :first-child {
   margin-left: 0px;
 }
 
@@ -149,11 +153,14 @@ button {
   transform: translateX(15px) translateY(0px);
 }
 
+.profile picture {
+  object-fit: cover;
+  display: block;
+}
+
 .profile img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  display: block;
 }
 
 .loading-container {

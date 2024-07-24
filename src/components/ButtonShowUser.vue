@@ -6,7 +6,11 @@
         <span @click="closeModal" class="close">&times;</span>
         <h2>All People</h2>
         <div class="modal-profile" v-for="(person, index) in people" :key="index">
-          <img :src="person.icon" :alt="getFullName(person)" />
+          <picture>
+            <source media="(min-width: 1200px)" :srcset="person.icon">
+            <source media="(min-width: 768px)" :srcset="person.icon">
+            <img :src="person.icon" :alt="getFullName(person)">
+          </picture>
           <span>{{ getFullName(person) }}</span>
         </div>
       </div>
@@ -99,11 +103,12 @@ const getFullName = (person) => {
   margin-bottom: 15px;
 }
 
-.modal-profile img {
+.modal-profile picture {
   width: 50px;
   height: 50px;
+  margin-right: 10px;
   border: 3px solid #dfdfdf;
   border-radius: 50%;
-  margin-right: 10px;
+  overflow: hidden;
 }
 </style>

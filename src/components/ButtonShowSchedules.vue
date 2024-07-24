@@ -18,7 +18,11 @@
                       <div v-for="person in pair" :key="person.email"
                         :class="{ 'matched': personMatchesFilter(person), 'not-matched': !personMatchesFilter(person) }"
                         class="profile">
-                        <img :src="person.icon" :alt="person.name" />
+                        <picture>
+                          <source media="(min-width: 1200px)" :srcset="person.icon">
+                          <source media="(min-width: 768px)" :srcset="person.icon">
+                          <img :src="person.icon" :alt="person.name">
+                        </picture>
                         <span>{{ person.name }}</span>
                       </div>
                     </div>
@@ -169,11 +173,14 @@ h4 {
   transform: translateX(15px) translateY(0px);
 }
 
+.profile picture {
+  object-fit: cover;
+  display: block;
+}
+
 .profile img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  display: block;
 }
 
 .filter-input {
